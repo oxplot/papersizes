@@ -60,6 +60,18 @@ var (
 	SizeB8  = &Size{"B8", StandardISO216, 62, 88}
 	SizeB9  = &Size{"B9", StandardISO216, 44, 62}
 	SizeB10 = &Size{"B10", StandardISO216, 31, 44}
+
+	SizeC0  = &Size{"C0", StandardISO269, 917, 1297}
+	SizeC1  = &Size{"C1", StandardISO269, 648, 917}
+	SizeC2  = &Size{"C2", StandardISO269, 458, 648}
+	SizeC3  = &Size{"C3", StandardISO269, 324, 458}
+	SizeC4  = &Size{"C4", StandardISO269, 229, 324}
+	SizeC5  = &Size{"C5", StandardISO269, 162, 229}
+	SizeC6  = &Size{"C6", StandardISO269, 114, 162}
+	SizeC7  = &Size{"C7", StandardISO269, 81, 114}
+	SizeC8  = &Size{"C8", StandardISO269, 57, 81}
+	SizeC9  = &Size{"C9", StandardISO269, 40, 57}
+	SizeC10 = &Size{"C10", StandardISO269, 28, 40}
 )
 
 // Sizes maps a paper size name to one or more Size instances
@@ -89,4 +101,16 @@ var Sizes = map[string][]*Size{
 	"B8":  {SizeB8},
 	"B9":  {SizeB9},
 	"B10": {SizeB10},
+
+	"C0":  {SizeC0},
+	"C1":  {SizeC1},
+	"C2":  {SizeC2},
+	"C3":  {SizeC3},
+	"C4":  {SizeC4},
+	"C5":  {SizeC5},
+	"C6":  {SizeC6},
+	"C7":  {SizeC7},
+	"C8":  {SizeC8},
+	"C9":  {SizeC9},
+	"C10": {SizeC10},
 }
