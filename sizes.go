@@ -2,7 +2,6 @@
 // and their dimensions.
 // Wikipedia article https://en.wikipedia.org/wiki/Paper_size has been
 // the primary source for this package.
-
 package papersizes
 
 import (
