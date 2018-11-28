@@ -5,6 +5,10 @@
 
 package papersizes
 
+import (
+	"strings"
+)
+
 type Standard struct {
 	// Name of the standard
 	Name string
@@ -14,6 +18,7 @@ var (
 	StandardISO216 = &Standard{"ISO-126"}
 	StandardISO269 = &Standard{"ISO-269"}
 	StandardDIN476 = &Standard{"DIN 476"}
+	StandardANSI   = &Standard{"ANSI"}
 )
 
 // Standards maps standard names to instances of standards
@@ -21,6 +26,7 @@ var Standards = map[string]*Standard{
 	"ISO-126": StandardISO216,
 	"ISO-269": StandardISO269,
 	"DIN 476": StandardDIN476,
+	"ANSI":    StandardANSI,
 }
 
 // Size describes the attributes of a paper size
@@ -93,6 +99,12 @@ var (
 
 	Size4A0 = &Size{"4A0", StandardDIN476, 1682, 2378}
 	Size2A0 = &Size{"2A0", StandardDIN476, 1189, 1682}
+
+	SizeANSIA = &Size{"ANSI A", StandardANSI, 216, 279}
+	SizeANSIB = &Size{"ANSI B", StandardANSI, 279, 432}
+	SizeANSIC = &Size{"ANSI C", StandardANSI, 432, 559}
+	SizeANSID = &Size{"ANSI D", StandardANSI, 559, 864}
+	SizeANSIE = &Size{"ANSI E", StandardANSI, 864, 1118}
 )
 
 // Sizes maps a paper size name to one or more Size instances
@@ -153,4 +165,39 @@ var Sizes = map[string][]*Size{
 
 	"4A0": {Size4A0},
 	"2A0": {Size2A0},
+
+	"ANSI A": {SizeANSIA},
+	"ANSI B": {SizeANSIB},
+	"ANSI C": {SizeANSIC},
+	"ANSI D": {SizeANSID},
+	"ANSI E": {SizeANSIE},
+
+	"Letter":    {SizeANSIA},
+	"US Letter": {SizeANSIA},
+}
+
+// normalizedSizes is similar to Sizes but with normalized keys
+// for a more forgiving lookup (e.g. mixed case)
+var normalizedSizes = make(map[string][]*Size, len(Sizes))
+
+func init() {
+	for k, v := range Sizes {
+		normalizedSizes[strings.ToLower(k)] = v
+	}
+}
+
+// FromName looks up paper sizes by name and returns the first
+// match. If no match is found, nil is returned.
+func FromName(n string) *Size {
+	matches := normalizedSizes[n]
+	if matches == nil {
+		return nil
+	}
+	return matches[0]
+}
+
+// FromNameAll looks up paper sizes by name and returns all
+// the matching sizes. If no match is found, nil is returned.
+func FromNameAll(n string) []*Size {
+	return normalizedSizes[n]
 }
