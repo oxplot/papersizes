@@ -11,14 +11,14 @@ type Standard struct {
 }
 
 var (
-	StandardISO216 = Standard{"ISO-126"}
-	StandardISO269 = Standard{"ISO-269"}
+	StandardISO216 = &Standard{"ISO-126"}
+	StandardISO269 = &Standard{"ISO-269"}
 )
 
 // Standards maps standard names to instances of standards
 var Standards = map[string]*Standard{
-	"ISO-126": &StandardISO216,
-	"ISO-269": &StandardISO269,
+	"ISO-126": StandardISO216,
+	"ISO-269": StandardISO269,
 }
 
 // Size describes the attributes of a paper size
@@ -37,35 +37,35 @@ type Size struct {
 }
 
 var (
-	SizeA0  = Size{"A0", StandardISO216, 841, 1189}
-	SizeA1  = Size{"A1", StandardISO216, 594, 841}
-	SizeA2  = Size{"A2", StandardISO216, 420, 594}
-	SizeA3  = Size{"A3", StandardISO216, 297, 420}
-	SizeA4  = Size{"A4", StandardISO216, 210, 297}
-	SizeA5  = Size{"A5", StandardISO216, 148, 210}
-	SizeA6  = Size{"A6", StandardISO216, 105, 148}
-	SizeA7  = Size{"A7", StandardISO216, 74, 105}
-	SizeA8  = Size{"A8", StandardISO216, 52, 74}
-	SizeA9  = Size{"A9", StandardISO216, 37, 52}
-	SizeA10 = Size{"A10", StandardISO216, 26, 37}
+	SizeA0  = &Size{"A0", StandardISO216, 841, 1189}
+	SizeA1  = &Size{"A1", StandardISO216, 594, 841}
+	SizeA2  = &Size{"A2", StandardISO216, 420, 594}
+	SizeA3  = &Size{"A3", StandardISO216, 297, 420}
+	SizeA4  = &Size{"A4", StandardISO216, 210, 297}
+	SizeA5  = &Size{"A5", StandardISO216, 148, 210}
+	SizeA6  = &Size{"A6", StandardISO216, 105, 148}
+	SizeA7  = &Size{"A7", StandardISO216, 74, 105}
+	SizeA8  = &Size{"A8", StandardISO216, 52, 74}
+	SizeA9  = &Size{"A9", StandardISO216, 37, 52}
+	SizeA10 = &Size{"A10", StandardISO216, 26, 37}
 
-	SizeB0  = Size{"B0", StandardISO216, 1000, 1414}
-	SizeB1  = Size{"B1", StandardISO216, 707, 1000}
-	SizeB2  = Size{"B2", StandardISO216, 500, 707}
-	SizeB3  = Size{"B3", StandardISO216, 353, 500}
-	SizeB4  = Size{"B4", StandardISO216, 250, 353}
-	SizeB5  = Size{"B5", StandardISO216, 176, 250}
-	SizeB6  = Size{"B6", StandardISO216, 125, 176}
-	SizeB7  = Size{"B7", StandardISO216, 88, 125}
-	SizeB8  = Size{"B8", StandardISO216, 62, 88}
-	SizeB9  = Size{"B9", StandardISO216, 44, 62}
-	SizeB10 = Size{"B10", StandardISO216, 31, 44}
+	SizeB0  = &Size{"B0", StandardISO216, 1000, 1414}
+	SizeB1  = &Size{"B1", StandardISO216, 707, 1000}
+	SizeB2  = &Size{"B2", StandardISO216, 500, 707}
+	SizeB3  = &Size{"B3", StandardISO216, 353, 500}
+	SizeB4  = &Size{"B4", StandardISO216, 250, 353}
+	SizeB5  = &Size{"B5", StandardISO216, 176, 250}
+	SizeB6  = &Size{"B6", StandardISO216, 125, 176}
+	SizeB7  = &Size{"B7", StandardISO216, 88, 125}
+	SizeB8  = &Size{"B8", StandardISO216, 62, 88}
+	SizeB9  = &Size{"B9", StandardISO216, 44, 62}
+	SizeB10 = &Size{"B10", StandardISO216, 31, 44}
 )
 
 // Sizes maps a paper size name to one or more Size instances
 // The first slice element is the most common paper size
 // with that name in case of multiple ones.
-var Sizes = map[string][]Size{
+var Sizes = map[string][]*Size{
 	"A0":  {SizeA0},
 	"A1":  {SizeA1},
 	"A2":  {SizeA2},
