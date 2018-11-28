@@ -1,4 +1,4 @@
-// Packer papersizes provides mapping between many paper size standards
+// Package papersizes provides mapping between many paper size standards
 // and their dimensions.
 // Wikipedia article https://en.wikipedia.org/wiki/Paper_size has been
 // the primary source for this package.
