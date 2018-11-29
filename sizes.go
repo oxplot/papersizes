@@ -188,7 +188,7 @@ func init() {
 // FromName looks up paper sizes by name and returns the first
 // match. If no match is found, nil is returned.
 func FromName(n string) *Size {
-	matches := normalizedSizes[n]
+	matches := normalizedSizes[strings.ToLower(n)]
 	if matches == nil {
 		return nil
 	}
@@ -198,5 +198,5 @@ func FromName(n string) *Size {
 // FromNameAll looks up paper sizes by name and returns all
 // the matching sizes. If no match is found, nil is returned.
 func FromNameAll(n string) []*Size {
-	return normalizedSizes[n]
+	return normalizedSizes[strings.ToLower(n)]
 }
